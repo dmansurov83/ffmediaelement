@@ -16,6 +16,7 @@
         {
             public const string Source = "Source";
             public const string Stretch = "Stretch";
+            public const string HorizontalAlignment = "HorizontalAlignment";
             public const string StretchDirection = "StretchDirection";
             public const string Volume = "Volume";
             public const string Balance = "Balance";
@@ -88,6 +89,23 @@
         {
             get { return GetValue(SourceProperty) as Uri; }
             set { SetValue(SourceProperty, value); }
+        }
+
+        #endregion
+
+        #region HorizontalAlignment
+        
+        /// <summary>
+        /// Called when [HorizontalAlignment property changed].
+        /// </summary>
+        /// <param name="dependencyObject">The dependency object.</param>
+        /// <param name="e">The <see cref="DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
+        private static void OnHorizontalAlignmentPropertyChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
+        {
+            var element = dependencyObject as MediaElement;
+            if (element == null) return;
+
+            element.ViewBox.HorizontalAlignment = (HorizontalAlignment) e.NewValue;
         }
 
         #endregion

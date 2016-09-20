@@ -52,7 +52,7 @@
             /// <summary>
             /// Gets the path to where the FFmpeg binaries are stored
             /// </summary>
-            public static string BasePath{ get; internal set; }
+            public static string BasePath { get; internal set; }
 
             /// <summary>
             /// Gets the full path to ffmpeg.exe
@@ -82,6 +82,9 @@
             style.Setters.Add(new Setter(FlowDirectionProperty, FlowDirection.LeftToRight));
             style.Seal();
             StyleProperty.OverrideMetadata(typeof(MediaElement), new FrameworkPropertyMetadata(style));
+            FrameworkElement.HorizontalAlignmentProperty.OverrideMetadata(typeof(MediaElement),
+                    new FrameworkPropertyMetadata(new PropertyChangedCallback(OnHorizontalAlignmentPropertyChanged))
+                );
         }
 
         /// <summary>
